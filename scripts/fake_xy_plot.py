@@ -31,17 +31,21 @@ class Script(scripts.Script):
         with gr.Row():
             y_values = gr.Textbox(label="Y values", lines=1)
         draw_legend = gr.Checkbox(label='Draw legend', value=True)
+        rank = gr.Radio(choices=["Z", "N"], value="Z", label="Rank", interactive=True)
 
-        return [path_images, x_values, y_values, draw_legend]
+        return [path_images, x_values, y_values, draw_legend, rank]
 
-    def run(self, p, path_images, x_values, y_values, draw_legend):
+    def run(self, p, path_images, x_values, y_values, draw_legend, rank):
         pis = path_images.split("\n")
         xs = x_values.split(',')
         ys = y_values.split(',')
 
         def cell(x, y):
             try:
-                i = ys.index(y) * len(xs) + xs.index(x)
+                if rank == 'Z':
+                    i = ys.index(y) * len(xs) + xs.index(x)
+                else:
+                    i = xs.index(x) * len(ys) + ys.index(y)
                 return Image.open(pis[i])
             except:
                 raise ValueError("Invalid Params.")
