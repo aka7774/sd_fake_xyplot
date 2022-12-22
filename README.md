@@ -9,6 +9,8 @@ Generate X/Y Plot-like images.
 
 ![output](doc/output.png)
 
+画像はstable-diffusion-webui直下からの相対パスやでー
+
 これは
 
 ![output](doc/rank.png)
