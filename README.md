@@ -11,6 +11,8 @@ Generate X/Y Plot-like images.
 
 画像はstable-diffusion-webui直下からの相対パスやでー
 
+画像の縦横サイズは1番目のを使いまわす(全部同じなのが前提)
+
 これは
 
 ![output](doc/rank.png)
